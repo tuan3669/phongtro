@@ -1,0 +1,107 @@
+<div class="post-list">
+  <% posts.forEach(function(post) { %>
+  <div class="row bg-white rounded-3 p-3 mb-2 align-items-start">
+    <div class="col-md-4">
+      <img
+        src="<%= post.images[0] %>"
+        class="card-img-top rounded-3"
+        alt="..."
+        style="height: 200px; object-fit: cover"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="multi-line" style="max-width: 600px">
+        <a
+          href="/details/<%= post.id %>"
+          class="card-title text-capitalize text-decoration-none fs-6 fw-bold text-primary mt-2"
+        >
+          <% if (post.isvip === "vip3") { %>
+          <span class="text-danger">
+            <i class="fa fas fa-star"></i>
+            <i class="fa fas fa-star"></i>
+            <i class="fa fas fa-star"></i>
+            <i class="fa fas fa-star"></i>
+            <i class="fa fas fa-star"></i>
+          </span>
+          <% } %>
+          <!-- nếu post.isvip === "vip2" thì hiển thị 4 sao -->
+          <% if (post.isvip === "vip2") { %>
+          <span style="color: #ff8b13">
+            <i class="fa fas fa-star"></i>
+            <i class="fa fas fa-star"></i>
+            <i class="fa fas fa-star"></i>
+            <i class="fa fas fa-star"></i>
+          </span>
+          <% } %>
+          <!-- nếu post.isvip === "vip1" thì hiển thị 3 sao -->
+          <% if (post.isvip === "vip1") { %>
+          <span class="text-warning">
+            <i class="fa fas fa-star"></i>
+            <i class="fa fas fa-star"></i>
+            <i class="fa fas fa-star"></i>
+          </span>
+          <% } %>
+          <!-- nếu post.isvip === "vip0" thì không có sao -->
+          <% if (post.isvip === "vip0") { %>
+          <span></span>
+          <% } %><%= post.title %></a
+        >
+      </div>
+      <p class="text-muted m-0"><%= post.address%></p>
+      <p class="card-price text-success m-0 fw-bold">
+        <%= post.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) %><span
+          >/Tháng</span
+        >
+      </p>
+      <p class="card-text text-muted multi-line"><%= post.description %></p>
+      <div>
+        <a href="#" class="btn btn-success"><%= post.phone %></a>
+        <a href="#" class="btn btn-primary">Zalo</a>
+      </div>
+    </div>
+  </div>
+  <% }); %>
+</div>
+<!-- pagi -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination mt-5">
+    <!-- nếu có category_id thì phân trang cho category_id nếu có search thì phân trang cho search nếu không có gì hết thì phân trang post -->
+    <% if (category_id) { %>
+    <li class="page-item <%= page === 1 ? 'disabled' : '' %>">
+      <a class="page-link" href="/category/<%= category_id %>?page=<%= page - 1 %>">Trước</a>
+    </li>
+    <% } else if (search) { %>
+    <li class="page-item <%= page === 1 ? 'disabled' : '' %>">
+      <a class="page-link" href="/search?<%= search %>&page=<%= page - 1 %>">Trước</a>
+    </li>
+    <% } else { %>
+    <li class="page-item <%= page === 1 ? 'disabled' : '' %>">
+      <a class="page-link" href="/?page=<%= page - 1 %>">Trước</a>
+    </li>
+    <% } %> <% for (let i = 1; i <= totalPage; i++) { %> <% if (category_id) { %>
+    <li class="page-item <%= page === i ? 'active' : '' %>">
+      <a class="page-link" href="/category/<%= category_id %>?page=<%= i %>"><%= i %></a>
+    </li>
+    <% } else if (search) { %>
+    <li class="page-item <%= page === i ? 'active' : '' %>">
+      <a class="page-link" href="/search?<%= search %>&page=<%= i %>"><%= i %></a>
+    </li>
+    <% } else { %>
+    <li class="page-item <%= page === i ? 'active' : '' %>">
+      <a class="page-link" href="/?page=<%= i %>"><%= i %></a>
+    </li>
+    <% } %> <% } %> <% if (category_id) { %>
+    <li class="page-item <%= page === totalPage ? 'disabled' : '' %>">
+      <a class="page-link" href="/category/<%= category_id %>?page=<%= page + 1 %>">Sau</a>
+    </li>
+    <% } else if (search) { %>
+    <li class="page-item <%= page === totalPage ? 'disabled' : '' %>">
+      <a class="page-link" href="/search?<%= search %>&page=<%= page + 1 %>">Sau</a>
+    </li>
+    <% } else { %>
+    <li class="page-item <%= page === totalPage ? 'disabled' : '' %>">
+      <a class="page-link" href="/?page=<%= page + 1 %>">Sau</a>
+    </li>
+    <% } %>
+  </ul>
+</nav>

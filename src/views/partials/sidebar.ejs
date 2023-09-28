@@ -1,0 +1,48 @@
+<div class="bg-white p-3 rounded-3">
+  <h3 class="fs-5">Bài Đăng Mới</h3>
+  <% if (locals.postsNew) { %> <% postsNew.forEach(element => { %>
+  <div class="row mb-2 justify-content-center">
+    <div class="col-md-4 card-top">
+      <img src="<%- element.images[0]%>" class="img-post" style="object-fit: cover" alt="" />
+    </div>
+    <div class="col-md-8">
+      <a
+        href="/details/<%= element.id %>"
+        class="card-title text-primary fs-6 multi-line text-decoration-none"
+      >
+        <% if (element.isvip === "vip3") { %>
+        <span class="text-danger">
+          <i class="fa fas fa-star"></i>
+          <i class="fa fas fa-star"></i>
+          <i class="fa fas fa-star"></i>
+          <i class="fa fas fa-star"></i>
+          <i class="fa fas fa-star"></i>
+        </span>
+
+        <% } else if (element.isvip === "vip2") { %>
+        <span style="color: #ff8b13">
+          <i class="fa fas fa-star"></i>
+          <i class="fa fas fa-star"></i>
+          <i class="fa fas fa-star"></i>
+          <i class="fa fas fa-star"></i>
+        </span>
+
+        <% } else if (element.isvip === "vip1") { %>
+        <span class="text-warning">
+          <i class="fa fas fa-star"></i>
+          <i class="fa fas fa-star"></i>
+          <i class="fa fas fa-star"></i>
+        </span>
+
+        <% } %><%- element.title %>
+      </a>
+      <p class="card-price text-success fs-6 fw-bold m-0">
+        <%= element.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) %><span
+          >/Tháng</span
+        >
+      </p>
+    </div>
+  </div>
+
+  <% }) %> <% } %>
+</div>

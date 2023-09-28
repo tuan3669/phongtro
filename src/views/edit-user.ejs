@@ -1,0 +1,98 @@
+<%- include('./partials/head'); %>
+<!-- header -->
+<header><%- include('./partials/header'); %></header>
+<!-- header -->
+
+<div id="dashboard" class="container-fluid">
+  <div class="row">
+    <!-- sidebar -->
+    <%- include('./partials/sidebarPanel'); %>
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb " class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Quản lí</a></li>
+          <li class="breadcrumb-item active">Danh sách tin đăng</li>
+        </ol>
+      </nav>
+      
+      <!--  -->
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
+      >
+        <h3 class="h3">Cật nhật thông tin cá nhân</h3>
+      </div>
+
+      <!--  -->
+
+      <form class="" action="#" method="POST">
+        <div class="mb-3 row mt-5">
+          <label class="col-md-2 offset-md-2 col-form-label">Mã thành viên</label>
+          <div class="col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              value="#128163"
+              aria-label="Disabled input example"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="col-md-2 offset-md-2 col-form-label">Số điện thoại</label>
+          <div class="col-md-6">
+            <input
+              type="phone"
+              readonly
+              class="form-control disable"
+              value="0704975211"
+              aria-label="Disabled input example"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="col-md-2 offset-md-2 col-form-label">Tên hiển thị</label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" name="name" value="tuan" />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="col-md-2 offset-md-2 col-form-label">Email</label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" name="email" />
+          </div>
+        </div>
+
+        <div class="mb-3 row mt-5">
+          <label class="col-md-2 offset-md-2 col-form-label">Mật khẩu</label>
+          <div class="col-md-6">
+            <a class="#" href="#">Đổi mật khẩu</a>
+          </div>
+        </div>
+
+        <div class="mb-3 row mt-5">
+          <label class="col-md-2 offset-md-2 col-form-label">Ảnh đại diện</label>
+          <div class="col-md-6">
+            <div>
+              <input type="file" class="" />
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row mt-5">
+          <label class="col-md-2 col-form-label"></label>
+          <div class="col-md-8">
+            <button type="submit" class="btn btn-primary btn-lg mb-2 btn-block">
+              Lưu &amp; Cập nhật
+            </button>
+          </div>
+        </div>
+        <input type="hidden" name="user_id" value="" />
+      </form>
+    </main>
+    <!-- main -->
+  </div>
+</div>

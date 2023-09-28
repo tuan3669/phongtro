@@ -1,0 +1,93 @@
+<%- include('../../partials/head'); %>
+<!-- header -->
+<header><%- include('../../partials/header'); %></header>
+<!-- header -->
+
+<div id="dashboard" class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- sidebar -->
+    <%- include('../../partials/sidebarPanel'); %>
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb " class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Quản lí</a></li>
+          <li class="breadcrumb-item active">Danh sách gói tin</li>
+        </ol>
+      </nav>
+
+      <!--  -->
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
+      >
+        <h1 class="h2">Thêm sửa Gói tin</h1>
+      </div>
+
+      <!--  -->
+
+      <!-- .form new post -->
+
+      <form
+        id="packageForm"
+        method="post"
+        action="/quan-ly/posts"
+        enctype="multipart/form-data"
+        novalidate
+      >
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group row mt-1">
+              <div class="col-md-12">
+                <h3>Thông tin mô tả</h3>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label">Tên gói</label>
+              <div class="col-md-12">
+                <input name="name" type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label"
+                >Thời gian sử dụng của gói dịch vụ (tính bằng ngày)</label
+              >
+              <div class="col-md-12">
+                <input name="duration" type="number" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label">Giá</label>
+              <div class="col-md-12">
+                <input name="price" type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label">Nội dung mô tả</label>
+              <div class="col-md-12">
+                <textarea name="description" class="form-control" rows="9"></textarea>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <div class="form-group row mt-5">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary mb-5 btn-lg w-100">
+                  <i class="fas fa-save me-2"></i>Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- .form new post -->
+    </main>
+    <!-- main -->
+  </div>
+</div>
+<script defer type="module" src="../../../js/add-edit-package.js"></script>
+
+<%- include('../../partials/footerPanel'); %>

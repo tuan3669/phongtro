@@ -1,0 +1,128 @@
+<%- include('../../partials/head'); %>
+<!-- header -->
+<header><%- include('../../partials/header'); %></header>
+<!-- header -->
+
+<div id="dashboard" class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- sidebar -->
+    <%- include('../../partials/sidebarPanel'); %>
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb" class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Quản lí</a></li>
+          <li class="breadcrumb-item active">Danh sách tin đăng</li>
+        </ol>
+      </nav>
+
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
+      >
+        <h3 class="h3">Quản lý tin đăng</h3>
+
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="dropdown me-1">
+            <button
+              class="btn btn-outline-secondary dropdown-toggle btn-sm"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Lọc theo loại VIP
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Tin Hot</a>
+              <a class="dropdown-item">Tin VIP 30</a>
+              <a class="dropdown-item">Tin VIP 20</a>
+              <a class="dropdown-item">Tin VIP 10</a>
+              <a class="dropdown-item">Tin thường</a>
+            </div>
+          </div>
+          <div class="dropdown me-1">
+            <button
+              class="btn btn-outline-secondary dropdown-toggle btn-sm"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Lọc theo trạng thái
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Tin đang hiển thị</a>
+              <a class="dropdown-item">Tin hết hạn</a>
+              <a class="dropdown-item">Tin đang ẩn</a>
+            </div>
+          </div>
+          <a
+            href="https://puce-determined-raven.cyclic.app/posts/add-edit"
+            class="btn btn-danger btn-sm"
+            >Đăng tin mới</a
+          >
+          <!-- <div class="d-lg-none w-100">
+                <a class="btn btn-danger btn-block mt-3">Đăng tin mới</a>
+              </div> -->
+        </div>
+      </div>
+      <!--  -->
+      <div class="d-md-block">
+        <div class="table-responsive overflow-auto">
+          <table class="table table_post_listing table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Mã tin</th>
+                <th style="text-align: center; white-space: nowrap">Ảnh đại diện</th>
+                <th>Tiêu đề</th>
+                <th>Chuyên mục</th>
+                <th>Giá</th>
+                <th style="white-space: nowrap">Ngày tạo</th>
+                <th style="white-space: nowrap">Đẩy tin</th>
+                <th style="white-space: nowrap">Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody id="postList"></tbody>
+          </table>
+        </div>
+
+        <!-- end pagination -->
+      </div>
+      <nav>
+        <ul id="pagination" class="pagination justify-content-center"></ul>
+      </nav>
+    </main>
+  </div>
+</div>
+<template id="postTemplate">
+  <tr id="postItem">
+    <td data-id="number">Mã tin</td>
+    <td data-id="image">
+      <img style="width: 70px; height: 70px; object-fit: cover" src="" class="img-thumbnail" />
+    </td>
+    <td data-id="title"></td>
+    <td data-id="category"></td>
+    <td data-id="price"></td>
+    <td data-id="date"></td>
+    <td data-id="push">
+      <button class="btn btn-info"><i class="fas fa-bolt text-light"></i></button>
+    </td>
+    <td data-id="action">
+      <button id="edit-btn" type="button" class="btn btn-sm btn-success">Edit</button>
+      <button id="remove-btn" type="button" class="btn btn-sm btn-danger">Remove</button>
+    </td>
+  </tr>
+</template>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"
+  integrity="sha512-UOJe4paV6hYWBnS0c9GnIRH8PLm2nFK22uhfAvsTIqd3uwnWsVri1OPn5fJYdLtGY3wB11LGHJ4yPU1WFJeBYQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script type="module" src="../../../js/post-list.js"></script>
+<%- include('../../partials/footerPanel'); %>

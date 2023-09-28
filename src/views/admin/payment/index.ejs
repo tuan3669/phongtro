@@ -1,0 +1,58 @@
+<%- include('../../partials/head'); %>
+<!-- header -->
+<header><%- include('../../partials/header'); %></header>
+<!-- header -->
+
+<div id="dashboard" class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- sidebar -->
+    <%- include('../../partials/sidebarPanel'); %>
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb" class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Mua gói tin</a></li>
+          <li class="breadcrumb-item active">Danh sách gói tin</li>
+        </ol>
+      </nav>
+      <div class="row" id="packageList"></div>
+    </main>
+  </div>
+</div>
+<template id="packageTemplate">
+  <div class="col-md-4" id="packageItem">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-primary">
+        <h4 class="my-0 fw-bold mb-1 fs-3 text-center text-light" data-id="name"></h4>
+        <!-- số sao -->
+        <div data-id="star" class="d-flex justify-content-center">
+          <span class="fa fa-star checked text-warning"></span>
+          <span class="fa fa-star checked text-warning"></span>
+          <span class="fa fa-star checked text-warning"></span>
+          <span class="fa fa-star checked text-warning"></span>
+          <span class="fa fa-star checked text-warning"></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div data-id="price" class="card-title pricing-card-title text-center fs-4 text-danger">
+          <span class="fw-semibold"> Giá</span> : <span class="fw-bold"></span>
+        </div>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li data-id="description" class="fs-6 mb-1">
+            <span class="fw-semibold">Mô tả</span>:<span> </span>
+          </li>
+          <li data-id="duration">
+            <span class="fw-semibold">Thời gian sử dụng</span>:<span class="fw-bold"></span>
+          </li>
+        </ul>
+        <button data-id="buy" type="button" class="w-100 btn btn-lg btn-outline-primary">
+          Mua gói
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+<script type="module" src="../../../js/payment.js"></script>

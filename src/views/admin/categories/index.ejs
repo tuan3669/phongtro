@@ -1,0 +1,66 @@
+<%- include('../../partials/head'); %>
+<!-- header -->
+<header><%- include('../../partials/header'); %></header>
+
+<div id="dashboard" class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- sidebar -->
+    <%- include('../../partials/sidebarPanel'); %>
+
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb" class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Quản lí</a></li>
+          <li class="breadcrumb-item active">Danh sách Chuyên mục</li>
+        </ol>
+      </nav>
+
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
+      >
+        <h3 class="h3">Quản lý chuyên mục</h3>
+    <a href="https://puce-determined-raven.cyclic.app/categories/add-edit" class="btn btn-danger btn-sm">Tạo chuyên mục mới</a>
+       
+  
+  </div>
+   <div class="d-md-block">
+        <div class="table-responsive overflow-auto">
+          <table class="table table_post_listing table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Mã tin</th>
+                <th>Tiêu đề</th>
+                <th style="white-space: nowrap">Ngày tạo</th>
+                <th style="white-space: nowrap">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="categoryList"></tbody>
+          </table>
+        </div>
+
+      </div>
+      </div>
+
+      <!--  -->
+     
+       
+    </main>
+  </div>
+</div>
+<template id="categoryTemplate">
+  <tr id="categoryItem">
+    <td data-id="number">Số thứ tự</td>
+    <td data-id="title"></td>
+    <td data-id="date"></td>
+    <td data-id="action" class="text-center d-flex">
+      <button id="edit-btn" type="button" class="btn btn-sm btn-success">Edit</button>
+      <button id="remove-btn" type="button" class="btn btn-sm btn-danger">Remove</button>
+    </td>
+  </tr>
+</template>
+<script type="module" src="../../../js/category-list.js"></script>
+<%- include('../../partials/footerPanel'); %>

@@ -1,0 +1,393 @@
+<%- include('../../partials/head'); %>
+<!-- header -->
+<header><%- include('../../partials/header'); %></header>
+<!-- header -->
+
+<div id="dashboard" class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- sidebar -->
+    <%- include('../../partials/sidebarPanel'); %>
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb" class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Quản lí</a></li>
+          <li class="breadcrumb-item active">Danh sách tin đăng</li>
+        </ol>
+      </nav>
+
+      <div
+        id="filter-posts"
+        style="background-color: #febb02"
+        class="p-3 rounded d-flex gap-3 flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
+      >
+        <!-- Mã -->
+        <!-- <div style="width: 130px" class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Mã #34324324"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </div> -->
+
+        <!-- Mã -->
+        <!-- category -->
+
+        <div
+          class="modal fade"
+          id="category"
+          aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel"
+          tabindex="-1"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn-close m-0"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Chọn chuyên mục</h1>
+              </div>
+              <div class="modal-body">
+                <ul class="list-unstyled" id="category-list"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          id="categoryButton"
+          style="background-color: #fff"
+          class="btn btn-md"
+          data-bs-toggle="modal"
+          href="#category"
+          role="button"
+          >Tất cả</a
+        >
+
+        <!-- category -->
+
+        <!-- 
+          province
+         -->
+
+        <!-- modal 1 -->
+        <div
+          class="modal fade"
+          id="exampleModalToggle"
+          aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel"
+          tabindex="-1"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn-close m-0"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Chọn tỉnh thành phố</h1>
+              </div>
+              <div class="modal-body">
+                <ul class="list-unstyled" id="province-wrapper"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- modal 1 -->
+
+        <!-- modal 2 -->
+        <div
+          class="modal fade"
+          id="exampleModalToggle2"
+          aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel2"
+          tabindex="-1"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  class="btn btn-light"
+                  data-bs-target="#exampleModalToggle"
+                  data-bs-toggle="modal"
+                >
+                  <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Chọn Quận huyện</h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+
+              <div class="modal-body">
+                <ul class="list-unstyled" id="district-wrapper"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- modal 2 -->
+
+        <!-- modal 3 -->
+        <div
+          class="modal fade"
+          id="exampleModalToggle3"
+          aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel2"
+          tabindex="-1"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  class="btn btn-light"
+                  data-bs-target="#exampleModalToggle2"
+                  data-bs-toggle="modal"
+                >
+                  <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">Chọn Phường xã</h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+
+              <div class="modal-body">
+                <ul class="list-unstyled" id="ward-wrapper"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- modal 2 -->
+        <a
+          style="background-color: #fff"
+          class="btn btn-md"
+          data-bs-toggle="modal"
+          href="#exampleModalToggle"
+          role="button"
+          id="locationButton"
+          >Toàn quốc</a
+        >
+        <!-- 
+          province
+         -->
+        <!-- filter price -->
+
+        <div
+          class="modal fade modal-lg"
+          id="price"
+          aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel"
+          tabindex="-1"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" style="height: 700px">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn-close m-0"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Chọn Gía</h1>
+              </div>
+              <div class="modal-body">
+                <div class="mt-5">
+                  <div id="slider-price"></div>
+                  <span id="smooth-steps-values-price"></span>
+                </div>
+
+                <h5 class="text-center mt-3">Chọn Gía</h5>
+                <div class="mt-3" id="price-buttons">
+                  <button value="0-1" class="btn btn-secondary">Dưới 1 triệu đồng</button>
+                  <button value="1-2" class="btn btn-secondary">Từ 1 - 2 triệu đồng</button>
+                  <button value="2-3" class="btn btn-secondary">Từ 2 - 3 triệu đồng</button>
+                  <button value="3-5" class="btn btn-secondary">Từ 3 - 5 triệu đồng</button>
+                  <button value="5-7" class="btn btn-secondary">Từ 5 - 7 triệu đồng</button>
+                  <button value="7-10" class="btn btn-secondary">Từ 7 - 10 triệu đồng</button>
+                  <button value="10-15" class="btn btn-secondary">Từ 10 - 15 triệu đồng</button>
+                  <button value="15" class="btn btn-secondary">Trên 15 triệu đồng</button>
+                </div>
+                <!-- button  -->
+                <button
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  class="btn btn-warning w-100 mt-5 py-2"
+                >
+                  Áp dụng
+                </button>
+                <!-- button  -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          style="background-color: #fff"
+          class="btn btn-md"
+          data-bs-toggle="modal"
+          id="priceButton"
+          href="#price"
+          role="button"
+          >Chọn giá</a
+        >
+        <!-- filter price -->
+
+        <!-- filter price -->
+
+        <!-- filter acreage -->
+
+        <div
+          class="modal fade modal-lg"
+          id="acreage"
+          aria-hidden="true"
+          aria-labelledby="exampleModalToggleLabel"
+          tabindex="-1"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" style="height: 700px">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn-close m-0"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Chọn Diện tích</h1>
+              </div>
+              <div class="modal-body">
+                <div class="mt-5">
+                  <div id="slider-acreage"></div>
+                  <span id="smooth-steps-values-acreage"></span>
+                </div>
+
+                <h5 class="text-center mt-3">Chọn nhanh</h5>
+                <div class="mt-3" id="acreage-buttons">
+                  <button value="0-20" class="btn btn-secondary col-4">Dưới 20m2</button>
+                  <button value="20-30" class="btn btn-secondary col-4">Từ 20m2 - 30m2</button>
+                  <button value="30-50" class="btn btn-secondary col-4">Từ 30m2 - 50m2</button>
+                  <button value="50-70" class="btn btn-secondary col-4">Từ 50m2 - 70m2</button>
+                  <button value="70-90" class="btn btn-secondary col-4">Từ 70m2 - 90m2</button>
+                  <button value="90" class="btn btn-secondary col-4">Trên 90m2</button>
+                </div>
+                <!-- button  -->
+                <button
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  class="btn btn-warning w-100 mt-5 py-2"
+                >
+                  Áp dụng
+                </button>
+                <!-- button  -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          style="background-color: #fff"
+          class="btn btn-md"
+          data-bs-toggle="modal"
+          id="areageButton"
+          href="#acreage"
+          role="button"
+          >Chọn diện tích</a
+        >
+
+        <!-- filter acreage -->
+
+        <button type="button" id="search-button" class="btn btn-primary ms-auto">Tìm kiếm</button>
+      </div>
+      <!--  -->
+      <div class="table-responsive">
+        <table class="table table_post_listing table-bordered table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Mã tin</th>
+              <th scope="col">Ảnh đại diện</th>
+              <th scope="col">Tiêu đề</th>
+              <th scope="col">Tên thành viên</th>
+              <th scope="col">Chuyên mục</th>
+              <th scope="col">Giá</th>
+              <th scope="col">Ngày đăng</th>
+              <th scope="col">Loại tin</th>
+              <th scope="col">Chức năng</th>
+            </tr>
+          </thead>
+          <tbody id="postList"></tbody>
+        </table>
+
+        <!-- end pagination -->
+      </div>
+      <nav>
+        <ul id="pagination" class="pagination justify-content-center"></ul>
+      </nav>
+    </main>
+  </div>
+</div>
+<template id="provinceTemplate">
+  <li class="p-2">
+    <input class="form-check-input me-3" type="radio" name="province" />
+    <label for="province">Toàn quốc</label>
+  </li>
+</template>
+
+<template id="districtTemplate">
+  <li class="p-2">
+    <input class="form-check-input me-3" type="radio" name="district" />
+    <label for="district">Toàn quốc 2</label>
+  </li>
+</template>
+<template id="wardTemplate">
+  <li class="p-2">
+    <input class="form-check-input me-3" type="radio" name="ward" />
+    <label for="ward">Toàn quốc 2</label>
+  </li>
+</template>
+
+<template id="postTemplate">
+  <tr id="postItem">
+    <td data-id="number">Mã tin</td>
+    <td data-id="image">
+      <img style="width: 70px; height: 70px; object-fit: cover" src="" class="img-thumbnail" />
+    </td>
+    <td data-id="title"></td>
+    <td data-id="user"></td>
+    <td data-id="category"></td>
+    <td data-id="price"></td>
+    <td data-id="date"></td>
+    <td data-id="vip"></td>
+    <td data-id="action">
+      <button id="remove-btn" type="button" class="btn btn-sm btn-danger">Remove</button>
+    </td>
+    <!-- <td data-id="pack"></td> -->
+  </tr>
+</template>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.css"
+  integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"
+  integrity="sha512-UOJe4paV6hYWBnS0c9GnIRH8PLm2nFK22uhfAvsTIqd3uwnWsVri1OPn5fJYdLtGY3wB11LGHJ4yPU1WFJeBYQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script type="module" src="../../../js/post-list-admin.js"></script>
+<%- include('../../partials/footerPanel'); %>

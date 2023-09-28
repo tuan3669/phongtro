@@ -1,0 +1,159 @@
+<body class="bg-light">
+  <main class="container mt-2">
+    <form
+      class="row bg-yellow rounded-3 p-3 justify-content-center container mx-auto"
+      style="gap: 10px"
+      action="/search"
+    >
+      <div class="col-md-2 col-12">
+        <select
+          class="form-select form-select-lg fs-6 w-100"
+          aria-label=".form-select-lg example"
+          name="category"
+        >
+          <!-- sử dụng ejs loop locals.categories -->
+          <option selected value="">Chọn Danh Mục</option>
+          <% categories.forEach(element => { %>
+          <option value="<%= element._id %>"><%= element.title %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="col-md-2 col-12">
+        <select
+          class="form-select form-select-lg fs-6 w-100"
+          aria-label=".form-select-lg example"
+          id="select-province"
+          name="province"
+        >
+          <script>
+            const selectProvince = document.getElementById('select-province');
+            const defaultOption = document.createElement('option');
+            defaultOption.text = 'Toàn Quốc';
+            defaultOption.value = '';
+            selectProvince.add(defaultOption);
+
+            let api = 'https://provinces.open-api.vn/api/';
+            fetch(api)
+              .then((response) => response.json())
+              .then((data) => {
+                data.forEach((element) => {
+                  let option = document.createElement('option');
+                  option.text = element.name;
+                  option.value = element.name;
+                  selectProvince.add(option);
+                });
+              })
+              .catch((err) => console.log(err));
+          </script>
+        </select>
+      </div>
+      <div class="col-md-2 col-12">
+        <select
+          class="form-select form-select-lg fs-6 w-100"
+          aria-label=".form-select-lg example"
+          name="price"
+        >
+          <option selected value="">Chọn Giá</option>
+          <option value="1">Dưới 1 triệu</option>
+          <option value="2">1 - 5 triệu</option>
+          <option value="3">5 - 10 triệu</option>
+          <option value="4">Hơn 10 triệu</option>
+        </select>
+      </div>
+      <div class="col-md-2 col-12">
+        <select
+          class="form-select form-select-lg fs-6 w-100"
+          aria-label=".form-select-lg example"
+          name="acreage"
+        >
+          <option selected>Chọn Diện Tích</option>
+          <option value="1">Dưới 20m2</option>
+          <option value="2">Từ 20 - 50m2</option>
+          <option value="3">Từ 50 - 100m2</option>
+          <option value="3">Trên 100m2</option>
+        </select>
+      </div>
+      <!-- button search -->
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary btn-lg btn-block fs-6">Tìm Kiếm</button>
+      </div>
+    </form>
+    <script>
+      if (user) {
+        document.write(`
+        <div
+          class="row bg-primary d-md-none mt-3 rounded-3 py-3 px-2 container mx-auto"
+        >
+          <div class="col-12">
+            <div class="d-flex gap-3 align-items-start">
+              <!-- avatar -->
+              <img
+                src="${user.avatar}"
+                class="rounded-circle"
+                alt="..."
+                style="width: 50px; height: 50px"
+              />
+              <div class="d-flex flex-column">
+                <p class="text-white">
+                  Xin chào <strong class="fs-4">${user.username} !</strong>
+                </p>
+                <p class="text-white">
+                  Đi đến trang đăng tin hoặc quản lý tin đăng của bạn
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        `);
+      }
+    </script>
+    <div class="row container text-center d-md-flex justify-content-center d-none">
+      <div class="col-4 w-25">
+        <div class="card m-3 bg-white rounded-4 overflow-hidden">
+          <a href="search?category=&province=Thành+phố+Hồ+Chí+Minh">
+            <img src="../../img/thanhpho.jpeg" class="card-img-top" alt="..." />
+          </a>
+          <div class="card-body">
+            <a
+              href="search?category=&province=Thành+phố+Hồ+Chí+Minh"
+              class="card-title text-primary text-decoration-none"
+              >Hồ Chí Minh</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-4 w-25">
+        <div class="card m-3 bg-white rounded-4 overflow-hidden">
+          <a href="search?category=&province=Thành+phố+Cần+Thơ">
+            <img src="../../img/cantho.jpeg" class="card-img-top" alt="..." />
+          </a>
+          <div class="card-body">
+            <a
+              href="search?category=&province=Thành+phố+Cần+Thơ"
+              class="card-title text-primary text-decoration-none"
+              >Cần Thơ</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-4 w-25">
+        <div class="card m-3 bg-white rounded-4 overflow-hidden">
+          <a href="search?category=&province=Thành+phố+Hà+Nội">
+            <img src="../../img/hanoi.jpeg" class="card-img-top" alt="..." />
+          </a>
+          <div class="card-body">
+            <a
+              href="search?category=&province=Thành+phố+Hà+Nội"
+              class="card-title text-primary text-decoration-none"
+              >Hà Nội</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="row justify-content-center align-items-start">
+      <div class="col-md-8 col-12"><%- include("./partials/post"); %></div>
+      <div class="col-md-4 col-12 d-none d-md-block"><%- include("./partials/sidebar"); %></div>
+    </section>
+  </main>
+</body>

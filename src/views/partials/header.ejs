@@ -1,0 +1,134 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-blue">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../../../img/logo.png" class="rounded-3" alt="" width="50" height="50" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Trang Chủ</a>
+        </li>
+        <% if (locals.categories) { %> <% categories.forEach((category) => { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/category/<%= category._id %>"> <%= category.title %> </a>
+        </li>
+        <% }) %> <% } %>
+      </ul>
+      <div class="d-flex align-items-center" style="gap: 10px">
+        <script>
+          // get user from local storage
+          const user = JSON.parse(sessionStorage.getItem('user'));
+          if (user) {
+            document.write(
+              `<a
+          href="/posts"
+          class="p-2 rounded-3 text-white text-capitalize text-decoration-none d-none d-md-block"
+          >Xin Chào, ${user.username}</a
+        >`
+            );
+            document.write(`<a id="logout" href="/logout" class="btn btn-success">Đăng Xuất</a>`);
+            document.write(
+              ` <a href="/posts" class="btn btn-danger"
+          >Đăng Bài <i class="fa fa-plus"></i
+        ></a>`
+            );
+          } else {
+            document.write(`<a href="/signin" class="btn btn-success">Đăng Nhập</a>`);
+            document.write(`<a href="/signup" class="btn btn-success">Đăng Ký</a>`);
+          }
+        </script>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      Bạn đã hết phiên làm việc vui lòng đăng nhập lại
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="logInButton" class="btn btn-dark">Đăng nhập</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<!-- Bootstrap CSS v5.2.1 --> 
+
+<script src="
+https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js
+"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"
+  ></script>
+  
+<script>
+  // active menu khi click
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    
+    const menu = document.querySelectorAll('.nav-link');
+  menu.forEach((item) => {
+    if (item.href === window.location.href) {
+      item.classList.add('active');
+    }
+  });
+
+  const token = sessionStorage.getItem('token');
+  
+  if (token) {
+    const expirationTime = jwt_decode(token).exp; //  thời gian token
+    // thời hạn còn lại token
+    const now = Date.now() / 1000;
+    // * 1000 để  covert sang mili giây
+    const timeLeft = (expirationTime - now) * 1000;
+
+    setTimeout(() => {
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
+
+        const modal = new bootstrap.Modal('#staticBackdrop', {
+      keyboard: false,
+    });
+     modal.show()
+      console.log(modal)
+    
+      const button = document.getElementById('logInButton');
+
+      button.addEventListener('click', () => {
+        modal.hide();
+        window.location.assign('/');
+      });
+    }, timeLeft);
+  }
+});
+  
+</script>

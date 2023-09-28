@@ -1,0 +1,250 @@
+<%- include('../../partials/head'); %>
+<!-- header -->
+<header><%- include('../../partials/header'); %></header>
+<!-- header -->
+
+<div id="dashboard" class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- sidebar -->
+    <%- include('../../partials/sidebarPanel'); %>
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb " class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Quản lí</a></li>
+          <li class="breadcrumb-item active">Danh sách tin đăng</li>
+        </ol>
+      </nav>
+
+      <!--  -->
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
+      >
+        <h1 class="h2">Đăng tin mới</h1>
+      </div>
+      <p class="alert alert-danger mb-5" role="alert">
+        Nếu bạn đã từng đăng tin trên Phongtro123.com, hãy sử dụng chức năng ĐẨY TIN / GIA HẠN /
+        NÂNG CẤP VIP trong mục QUẢN LÝ TIN ĐĂNG để làm mới, đẩy tin lên cao thay vì đăng tin mới.
+        Tin đăng trùng nhau sẽ không được duyệt.
+      </p>
+
+      <!--  -->
+
+      <!-- .form new post -->
+
+      <form
+        id="postForm"
+        method="post"
+        action="/quan-ly/posts"
+        enctype="multipart/form-data"
+        novalidate
+      >
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Địa chỉ cho thuê</h3>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-form-label">Tỉnh/Thành phố</label>
+                  <select id="province" name="province" class="form-control">
+                    <option value="">chọn tỉnh thành phố</option>
+                  </select>
+                  <div class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-form-label">Quận/Huyện</label>
+                  <select name="district" id="district" class="form-control">
+                    <option value="">chọn quận huyện</option>
+                  </select>
+                  <div class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-form-label">Phường/Xã</label>
+                  <select name="ward" id="ward" class="form-control">
+                    <option value="">chọn phường xã</option>
+                  </select>
+                  <div class="invalid-feedback"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="col-form-label">Số nhà</label>
+                  <input name="houseNumber" type="text" class="form-control" />
+                  <div class="invalid-feedback"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="col-form-label">Địa chỉ chính xác</label>
+                  <input name="address" type="text" class="form-control" />
+                  <div class="invalid-feedback"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row mt-5">
+              <div class="col-md-12">
+                <h3>Thông tin mô tả</h3>
+              </div>
+            </div>
+            <div class="form-group row mt-3">
+              <label class="col-md-12 col-form-label">Loại chuyên mục</label>
+              <div class="col-md-6">
+                <select name="category" class="form-control">
+                  <option value="">-- Chọn loại chuyên mục --</option>
+                </select>
+                <div class="invalid-feedback">demo</div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label">Tiêu đề</label>
+              <div class="col-md-12">
+                <input name="title" type="text" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label">Nội dung mô tả</label>
+              <div class="col-md-12">
+                <textarea name="description" class="form-control" rows="10"></textarea>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="phone" class="col-md-12 col-form-label">Thông tin liên hệ</label>
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <input name="username" disabled type="text" class="form-control disabled" />
+                  <div class="invalid-feedback"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="phone" class="col-md-12 col-form-label">Điện thoại</label>
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <input name="phone" type="number" class="form-control disabled" disabled />
+                  <div class="invalid-feedback"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-12 col-form-label">Giá cho thuê</label>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <input name="price" type="text" class="form-control" />
+                  <div class="input-group-append">
+                    <span class="input-group-text">đồng</span>
+                  </div>
+                  <div class="invalid-feedback">demo</div>
+                </div>
+                <small class="form-text text-muted"
+                  >Nhập đầy đủ số, ví dụ 1 triệu thì nhập là 1000000</small
+                >
+              </div>
+              <label class="col-sm-12 control-label"></label>
+            </div>
+            <div class="form-group row">
+              <label for="acreage" class="col-md-12 col-form-label">Diện tích</label>
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <input name="acreage" type="text" class="form-control" />
+                  <div class="invalid-feedback">demo</div>
+
+                  <div class="input-group-append">
+                    <span class="input-group-text">m<sup>2</sup></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row mt-1">
+              <h3>Hình ảnh</h3>
+              <div class="col-md-6">
+                <input
+                  name="file"
+                  accept="image/gif, image/jpeg, image/png"
+                  multiple
+                  type="file"
+                  class="form-control"
+                />
+                <div class="invalid-feedback"></div>
+              </div>
+              <div id="image-list" class="col-md-6"></div>
+            </div>
+
+            <div class="form-group row mt-5">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary mb-5 btn-lg w-100">
+                  <i class="fas fa-save me-2"></i>Save
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- map -->
+          <div class="col-md-4">
+            <div id="map" class="w-100 mb-5" style="height: 400px">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.638429542831!2d105.76562691406565!3d10.04666547498736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0880f08006ffb%3A0x9a745510330faf4e!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBL4bu5IHRodeG6rXQgLSBDw7RuZyBuZ2jhu4cgQ-G6p24gVGjGoQ!5e0!3m2!1svi!2s!4v1677394131044!5m2!1svi!2s"
+                style="width: 100%; height: 100%"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <!-- map -->
+
+            <!-- note -->
+            <div
+              class="card"
+              style="color: #856404; background-color: #fff3cd; border-color: #ffeeba"
+            >
+              <div class="card-body">
+                <h4 class="card-title">Lưu ý khi đăng tin</h4>
+                <ul>
+                  <li style="list-style-type: square; margin-left: 15px">
+                    Nội dung phải viết bằng tiếng Việt có dấu
+                  </li>
+                  <li style="list-style-type: square; margin-left: 15px">
+                    Tiêu đề tin không dài quá 100 kí tự
+                  </li>
+                  <li style="list-style-type: square; margin-left: 15px">
+                    Các bạn nên điền đầy đủ thông tin vào các mục để tin đăng có hiệu quả hơn.
+                  </li>
+                  <li style="list-style-type: square; margin-left: 15px">
+                    Để tăng độ tin cậy và tin rao được nhiều người quan tâm hơn, hãy sửa vị trí tin
+                    rao của bạn trên bản đồ bằng cách kéo icon tới đúng vị trí của tin rao.
+                  </li>
+                  <li style="list-style-type: square; margin-left: 15px">
+                    Tin đăng có hình ảnh rõ ràng sẽ được xem và gọi gấp nhiều lần so với tin rao
+                    không có ảnh. Hãy đăng ảnh để được giao dịch nhanh chóng!
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- .form new post -->
+    </main>
+    <!-- main -->
+  </div>
+</div>
+<script defer type="module" src="../../../js/add-edit-post.js"></script>
+
+<%- include('../../partials/footerPanel'); %>

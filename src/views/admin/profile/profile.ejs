@@ -1,0 +1,93 @@
+<%- include('../../partials/head'); %>
+<!-- header -->
+<header><%- include('../../partials/header'); %></header>
+<!-- header -->
+
+<div id="dashboard" class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- sidebar -->
+    <%- include('../../partials/sidebarPanel'); %>
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb" class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Quản lí</a></li>
+          <li class="breadcrumb-item active">Thông tin cá nhân</li>
+        </ol>
+      </nav>
+
+      <!--  -->
+      <div class="w-100">
+        <form style="max-width: 600px; margin: 0 auto" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label for="name" class="form-label">Họ và tên</label>
+                <input type="text" class="form-control" id="name" placeholder="Họ và tên" />
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Số điện thoại</label>
+                <input type="text" class="form-control" id="phone" placeholder="Số điện thoại" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <a href="/profile/change-password"> Đổi mật khẩu </a>
+              </div>
+            </div>
+
+            <!-- avatar -->
+            <div class="col-12">
+              <div class="mb-3">
+                <label for="avatar" class="form-label">Ảnh đại diện</label>
+                <div class="d-flex align-items-center">
+                  <div class="avatar">
+                    <img src="" alt="" />
+                  </div>
+                  <div class="d-flex gap-3 align-items-center">
+                    <input type="file" class="form-control" id="file" name="file" />
+                    <img
+                      src=""
+                      alt=""
+                      id="img-avatar"
+                      class="rounded-circle"
+                      style="width: 50px; height: 50px; object-fit: cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button type="submit" id="btn-update-profile" class="btn btn-primary w-100">
+                Lưu
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"
+  integrity="sha512-UOJe4paV6hYWBnS0c9GnIRH8PLm2nFK22uhfAvsTIqd3uwnWsVri1OPn5fJYdLtGY3wB11LGHJ4yPU1WFJeBYQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+  integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script src="../../../../js/profile.js"></script>
+<%- include('../../partials/footerPanel'); %>

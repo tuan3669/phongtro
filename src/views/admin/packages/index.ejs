@@ -1,0 +1,81 @@
+<%- include('../../partials/head'); %>
+<!-- header -->
+<header><%- include('../../partials/header'); %></header>
+<!-- header -->
+
+<div id="dashboard" class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- sidebar -->
+    <%- include('../../partials/sidebarPanel'); %>
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb" class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Quản lí</a></li>
+          <li class="breadcrumb-item active">Danh gói tin</li>
+        </ol>
+      </nav>
+
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
+      >
+        <h3 class="h3">Quản lý gói tin</h3>
+
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <a
+            href="https://puce-determined-raven.cyclic.app/packages/add-edit"
+            class="btn btn-danger btn-sm"
+            >Thêm tin mới</a
+          >
+          <!-- <div class="d-lg-none w-100">
+                <a class="btn btn-danger btn-block mt-3">Đăng tin mới</a>
+              </div> -->
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="d-md-block">
+        <div class="table-responsive overflow-auto">
+          <table class="table table_post_listing table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Mã gói</th>
+                <th style="text-align: center; white-space: nowrap">Tên gói</th>
+                <th style="text-align: center; white-space: nowrap">Mô tả</th>
+                <th>Giá</th>
+                <th>Kích hoạt</th>
+                <th style="white-space: nowrap">Thời gian sử dụng</th>
+                <th style="white-space: nowrap">Chức năng</th>
+              </tr>
+            </thead>
+            <tbody id="packageList"></tbody>
+          </table>
+        </div>
+
+        <!-- end pagination -->
+      </div>
+      <nav>
+        <ul id="pagination" class="pagination justify-content-center"></ul>
+      </nav>
+    </main>
+  </div>
+</div>
+<template id="packageTemplate">
+  <tr id="packageItem">
+    <td data-id="number">Mã tin</td>
+    <td data-id="name"></td>
+    <td data-id="description"></td>
+    <td data-id="price"></td>
+    <td data-id="active"></td>
+    <td data-id="date"></td>
+    <td data-id="action" class="d-flex">
+      <button id="edit-btn" type="button" class="btn btn-sm btn-success">Edit</button>
+      <button id="remove-btn" type="button" class="btn btn-sm btn-danger">Remove</button>
+    </td>
+  </tr>
+</template>
+<script type="module" src="../../../js/package-list.js"></script>
+<%- include('../../partials/footerPanel'); %>

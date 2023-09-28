@@ -1,0 +1,49 @@
+# GET https://puce-determined-raven.cyclic.app/
+
+# ###
+# GET https://puce-determined-raven.cyclic.app/quan-ly/posts/create
+
+function initUploadImage(form) {
+  let inputFiles = getFileUpload(form);
+  if (!inputFiles) return;
+  const imageContainer = document.getElementById('image-list');
+  imageContainer.addEventListener('click', (e) => {
+    if (e.target.tagName === 'IMG') {
+      const imgElement = e.target;
+      imgElement.remove();
+
+      // get all files
+      const fileList = inputFiles.files;
+
+      // convert to array
+      const uploadFiles = [...fileList];
+
+      // remove the file that corresponds to the removed image
+      const index = parseInt(imgElement.dataset.index);
+      uploadFiles.splice(index, 1);
+
+      // DataTransfer to convert elements in the DOM
+      const dataTransfer = new DataTransfer();
+      uploadFiles.forEach((file) => {
+        dataTransfer.items.add(file);
+      });
+
+      const newFileList = dataTransfer.files;
+      inputFiles.files = newFileList;
+    }
+  });
+
+  inputFiles.addEventListener('change', ({ target }) => {
+    // get all files
+    const fileList = target.files;
+
+    for (const [index, file] of Object.entries(fileList)) {
+      const imageURL = URL.createObjectURL(file);
+      const imgElment = document.createElement('img');
+      imgElment.classList.add('img-fuild');
+      imgElment.src = imageURL;
+      imgElment.dataset.index = index;
+      imageContainer.appendChild(imgElment);
+    }
+  });
+}

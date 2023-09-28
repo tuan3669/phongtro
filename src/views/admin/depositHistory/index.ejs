@@ -1,0 +1,66 @@
+<%- include('../../partials/head'); %>
+<!-- header -->
+<header><%- include('../../partials/header'); %></header>
+<!-- header -->
+
+<div id="dashboard" class="container-fluid">
+  <div class="row flex-nowrap">
+    <!-- sidebar -->
+    <%- include('../../partials/sidebarPanel'); %>
+    <!-- sidebar -->
+
+    <!-- main -->
+    <main id="main" class="col-md-10 col-sm">
+      <nav aria-label="breadcrumb" class="bg-gray p-3 rounded mb-2">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#">Phongtro123.com </a></li>
+          <li class="breadcrumb-item"><a href="#">Quản lí</a></li>
+          <li class="breadcrumb-item active">Danh gói tin</li>
+        </ol>
+      </nav>
+
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
+      >
+        <h3 class="h3">Lịch sử nạp tiền</h3>
+      </div>
+
+      <!--  -->
+      <div class="d-md-block">
+        <div class="table-responsive overflow-auto">
+          <table class="table table_post_listing table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Ngày mua</th>
+                <th style="text-align: center; white-space: nowrap">Mã giao dịch</th>
+                <th style="text-align: center; white-space: nowrap">gói tin</th>
+
+                <th style="text-align: center; white-space: nowrap">Số tiền</th>
+                <th>Trạng thái</th>
+                <th>Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody id="depositList"></tbody>
+          </table>
+        </div>
+
+        <!-- end pagination -->
+      </div>
+      <nav>
+        <ul id="pagination" class="pagination justify-content-center"></ul>
+      </nav>
+    </main>
+  </div>
+</div>
+<template id="depositTemplate">
+  <tr id="depositItem">
+    <td data-id="date"></td>
+    <td data-id="code"></td>
+    <td data-id="name"></td>
+    <td data-id="price"></td>
+    <td data-id="status"></td>
+    <td data-id="note"></td>
+  </tr>
+</template>
+<script type="module" src="../../../js/deposit-list.js"></script>
+<%- include('../../partials/footerPanel'); %>
